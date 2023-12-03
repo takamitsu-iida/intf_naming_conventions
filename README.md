@@ -1,18 +1,14 @@
-
 （このページはAdvent Calendar 2023向けに記載したものです）
 
 <!--
-20231130 書き始め
-
 この投稿は、JP - FNETS - server-p Advent Calendar 2023の＊＊日目の記事です。
 
-Topic #AdventCalender2023 #社内DX-SEデジタル革新
-
+Topic
+#AdventCalender2023 #社内DX-SEデジタル革新
 
 python3 -m venv .venv
 direnv allow
 -->
-
 
 # Cisco機器のインタフェース名を正規化するPythonコード
 
@@ -44,6 +40,7 @@ Total cdp entries displayed : 1
 
 この `Gig 0/0` という表示をパースして、正しいインタフェース名である `GigabitEthernet0/0` で統一したいのです。
 
+<BR><BR>
 
 ## そもそもインタフェース名ってなんだっけ？
 
@@ -60,9 +57,9 @@ Total cdp entries displayed : 1
 
 Cisco社が公開しているpyATSというPythonで作られたツールのソースコードに、
 convert_intf_nameという関数がありまして、
-その中に埋め込まれている辞書型のデータが一番まとまってると思います。
+その中に埋め込まれている辞書型データが一番まとまってると思います。
 
-https://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.py
+[common.py](https://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.pyhttps://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.py "common.py")
 
 上記のリンクが切れたときに備えて、引用しておきます。
 
@@ -230,7 +227,33 @@ class Common:
 
 IOS機器とXR機器でインタフェース名の扱いが微妙に違うことがわかります。
 
-私は必要に応じてこのコードをコピーして使い回すことにしています。
+オリジナルの `common.py` はクラスを使っていますが、
+必要な関数だけを抜き出して使い回すことにしています。
 
+<BR><BR>
 
 ## 使い方
+
+このリポジトリから `cisco_intf_name.py` をコピーして使う場合、そのまま実行すれば `main()` 内のテストコードが走ります。
+
+実行例。
+
+```
+iida@s400win:~/git/intf_naming_conventions/lib$ ./cisco_intf_name.py
+Gig0/0 is normazlied as GigabitEthernet0/0
+Gig 0/0 is normazlied as GigabitEthernet0/0
+Te1/0/1 is normazlied as TenGigabitEthernet1/0/1
+Twe 1/0/1 is normazlied as TwentyFiveGigE1/0/1
+Hu1/0/49 is normazlied as HundredGigE1/0/49
+```
+
+`Gig 0/0` のようにインタフェース名と番号の間にスペースが入っても大丈夫ですね。
+
+<BR><BR>
+
+## おまけ
+
+手っ取り早く試せるように Google Colaboratory にも作成しておきました。
+下記のリンクから Open in Colab というアイコンをクリックするとすぐに試せます。
+
+[intf_naming_conventions.ipynb](https://github.com/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb "Open in Colab")
