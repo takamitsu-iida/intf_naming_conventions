@@ -7,6 +7,10 @@
 この投稿は、JP - FNETS - server-p Advent Calendar 2023の＊＊日目の記事です。
 
 Topic #AdventCalender2023 #社内DX-SEデジタル革新
+
+
+python3 -m venv .venv
+direnv allow
 -->
 
 
@@ -22,14 +26,33 @@ Topic #AdventCalender2023 #社内DX-SEデジタル革新
 - show interfaces Gigabit0/1
 
 人間がコマンドを打つときには便利なのですが、プログラミングで文字列処理するときには少々厄介で、
-g0/1とかgi0/1といった形式のデータを正式名称に変換して正規化したい、という場面もあることでしょう。
+省略形式のデータを正式名称に統一したい（正規化したい）、という場面も結構あります。
+
+`show cdp neighbors` コマンドで隣接機器の情報を調べると、インタフェースの名称が省略されて表示されます。
+
+```
+R1#show cdp neighbors
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone,
+                  D - Remote, C - CVTA, M - Two-port Mac Relay
+
+Device ID        Local Intrfce     Holdtme    Capability  Platform  Port ID
+R2               Gig 0/0           171              R B             Gig 0/0
+
+Total cdp entries displayed : 1
+```
+
+この `Gig 0/0` という表示をパースして、正しいインタフェース名である `GigabitEthernet0/0` で統一したいのです。
 
 
+## そもそもインタフェース名ってなんだっけ？
 
-そもそも、昨今の高速なイーサネットのインタフェース名ってなんだっけ？という疑問もありますね。
+日頃使い慣れているギガビットイーサはともかくとして、
+昨今の高速なイーサネットのインタフェース名ってなんだっけ？という疑問もあります。
 
-サーバやストレージ機器の周辺でよく使われている2ギガとか5ギガみたいなマルチギガビットだったり、
-アップリンクで使われる40ギガ、100ギガみたいな高速なLANのインタフェース名って、パッとは思い浮かばないですよね。
+サーバやストレージ機器の周辺では2ギガとか5ギガみたいなマルチギガビットが使われていたり、
+アップリンクのポートでよく使われる40ギガ、100ギガみたいな高速なLANのインタフェース名って、パッとは思い浮かばないですよね。
+
 どっかにそんな情報まとまってるんじゃないの？と誰もが思うと思いますが、
 シスコ社のドキュメントを探すのは意外に難しくて、未だに見つけられずにいます。
 
@@ -208,3 +231,6 @@ class Common:
 IOS機器とXR機器でインタフェース名の扱いが微妙に違うことがわかります。
 
 私は必要に応じてこのコードをコピーして使い回すことにしています。
+
+
+## 使い方
