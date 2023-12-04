@@ -24,7 +24,8 @@ direnv allow
 人間がコマンドを打つときには便利なのですが、プログラミングで文字列処理するときには少々厄介で、
 省略形式のデータを正式名称に統一したい（正規化したい）、という場面も結構あります。
 
-たとえば `show cdp neighbors` コマンドで隣接機器の情報を調べると、下記のようにインタフェースの名称が省略されて表示されます。
+たとえば `show cdp neighbors` コマンドで隣接機器の情報を調べると、
+下記のようにインタフェースの名称が `Gig 0/0` といように省略されて表示されます。
 
 ```
 R1#show cdp neighbors
@@ -38,7 +39,9 @@ R2               Gig 0/0           171              R B             Gig 0/0
 Total cdp entries displayed : 1
 ```
 
-このような `Gig 0/0` という省略された表示を正しいインタフェース名である `GigabitEthernet0/0` で統一したいのです。
+一方、コンフィグでは `GigabitEthernet0/0` という名称で扱われますので、
+`Gig 0/0` のような省略されたインタフェース表記が登場した場合には、
+正式な名称に正規化（統一化）したいわけです。
 
 <BR><BR>
 
@@ -59,7 +62,7 @@ Cisco社が公開しているpyATSというPythonで作られたツールのソ�
 convert_intf_nameという関数がありまして、
 その中に埋め込まれている辞書型データが一番まとまってると思います。
 
-[common.py](https://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.pyhttps://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.py "common.py")
+Github上の[common.py](https://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.pyhttps://github.com/CiscoTestAutomation/genieparser/blob/master/src/genie/libs/parser/utils/common.py "common.py")
 
 上記のリンクが切れたときに備えて、引用しておきます。
 
@@ -231,7 +234,7 @@ IOS機器とXR機器でインタフェース名の扱いが微妙に違うこと
 
 ## 使い方
 
-オリジナルの `common.py` はクラスを使っていますが、私は必要な関数だけを抜き出して使い回しています。
+オリジナルの `common.py` はクラスを使っていますが、私は必要な部分だけを抜き出して使い回しています。
 
 このリポジトリから `cisco_intf_name.py` をコピーして使う場合、そのまま実行すれば `main()` 内のテストコードが走ります。
 
@@ -247,13 +250,17 @@ Twe 1/0/1 is normazlied as TwentyFiveGigE1/0/1
 Hu1/0/49 is normazlied as HundredGigE1/0/49
 ```
 
+`Gig0/0`は`GigabitEthernet0/0`に変換されます。
+
 `Gig 0/0` のようにインタフェース名と番号の間にスペースが入っても大丈夫ですね。
+
+`Twe` は `TwentyFiveGigE` です。先頭二文字 `Tw` だけにしまうと `TwoGigabitEthernet` になってしまいますので要注意です。
 
 <BR><BR>
 
 ## おまけ
 
 手っ取り早く試せるように Google Colaboratory にも作成しておきました。
-下記のリンクから Open in Colab というアイコンをクリックするとすぐに試せます。
+下記のリンクから Open in Colab というアイコンをクリックすると、このコードをすぐに試せます。
 
 [intf_naming_conventions.ipynb](https://github.com/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb "Open in Colab")
