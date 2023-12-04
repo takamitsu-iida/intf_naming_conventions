@@ -145,7 +145,7 @@ if __name__ == '__main__':
 
         for intf in test_intfs:
             normalized_intf_name = convert_intf_name(intf=intf)
-            print(f'{intf} is normazlied as {normalized_intf_name}')
+            print(f'{intf} is normalized as {normalized_intf_name}')
 
         return 0
 
