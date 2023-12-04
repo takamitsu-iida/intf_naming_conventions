@@ -289,7 +289,6 @@ Hu1/0/49 is normazlied as HundredGigE1/0/49
 
 手っ取り早く試せるように Google Colaboratory にも作成しておきました。
 下記の Open in Colab というアイコンをクリックすると、このコードをすぐに試せます。
-
-`test_intfs = []` のところを書き換えてお試しください。
+`test_intfs = []` のところに正規化したいインタフェース名を書き並べてお試しください。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb)
