@@ -238,7 +238,32 @@ IOS機器とXR機器でインタフェース名の扱いが微妙に違うこと
 
 このリポジトリから `cisco_intf_name.py` をコピーして使う場合、そのまま実行すれば `main()` 内のテストコードが走ります。
 
-実行例（↓）
+テストコードはこんな感じです。
+
+```python
+if __name__ == '__main__':
+    import sys
+
+    def main():
+
+        test_intfs = [
+            'Gig0/0',
+            'Gig 0/0',
+            'Te1/0/1',
+            'Twe 1/0/1',
+            'Hu1/0/49',
+        ]
+
+        for intf in test_intfs:
+            normalized_intf_name = convert_intf_name(intf=intf)
+            print(f'{intf} is normazlied as {normalized_intf_name}')
+
+        return 0
+
+    sys.exit(main())
+```
+
+これを実行すると、このように出力されます（↓）
 
 ```bash
 iida@s400win:~/git/intf_naming_conventions/lib$ ./cisco_intf_name.py
@@ -262,5 +287,7 @@ Hu1/0/49 is normazlied as HundredGigE1/0/49
 
 手っ取り早く試せるように Google Colaboratory にも作成しておきました。
 下記のリンクから Open in Colab というアイコンをクリックすると、このコードをすぐに試せます。
+
+`test_intfs = []` のところを書き換えてお試しください。
 
 [intf_naming_conventions.ipynb](https://github.com/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb "Open in Colab")
