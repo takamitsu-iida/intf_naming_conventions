@@ -287,7 +287,7 @@ Hu1/0/49 is normazlied as HundredGigE1/0/49
 
 ## おまけ
 
-手っ取り早く試せるように Google Colaboratory にも作成しておきました。
+手っ取り早く試せるように Google Colaboratory 用のファイルを作成しておきました。
 下記の Open in Colab というアイコンをクリックすると、このコードをすぐに試せます。
 `test_intfs = []` のところに正規化したいインタフェース名を書き並べてお試しください。
 
