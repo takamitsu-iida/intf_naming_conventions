@@ -281,6 +281,8 @@ Hu1/0/49 is normazlied as HundredGigE1/0/49
 
 `Twe` は `TwentyFiveGigE` です。先頭二文字 `Tw` だけにしまうと `TwoGigabitEthernet` になってしまいますので要注意です。
 
+このコードを持っておけば、パラメータシートをYAMLで書いたりする場面で長い正式名称を使わずとも省略表記で書けるようになって便利です。
+
 <BR><BR>
 
 ## おまけ
