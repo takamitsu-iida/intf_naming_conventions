@@ -266,22 +266,22 @@ if __name__ == '__main__':
 これを実行すると、このように出力されます（↓）
 
 ```bash
-iida@s400win:~/git/intf_naming_conventions/lib$ ./cisco_intf_name.py
+iida@s400win:~/git/intf_naming_conventions$ ./lib/cisco_intf_name.py
 
-Gig0/0 is normazlied as GigabitEthernet0/0
-Gig 0/0 is normazlied as GigabitEthernet0/0
-Te1/0/1 is normazlied as TenGigabitEthernet1/0/1
-Twe 1/0/1 is normazlied as TwentyFiveGigE1/0/1
-Hu1/0/49 is normazlied as HundredGigE1/0/49
+Gig0/0 is normalized as GigabitEthernet0/0
+Gig 0/0 is normalized as GigabitEthernet0/0
+Te1/0/1 is normalized as TenGigabitEthernet1/0/1
+Twe 1/0/1 is normalized as TwentyFiveGigE1/0/1
+Hu1/0/49 is normalized as HundredGigE1/0/49
 ```
 
 `Gig0/0`は`GigabitEthernet0/0`に変換されます。
 
-`Gig 0/0` のようにインタフェース名と番号の間にスペースが入っても大丈夫ですね。
+`Gig 0/0` のようにインタフェース名と番号の間にスペースが入っても大丈夫です。同じように変換されます。
 
-`Twe` は `TwentyFiveGigE` です。先頭二文字 `Tw` だけにしまうと `TwoGigabitEthernet` になってしまいますので要注意です。
+`Twe` は `TwentyFiveGigE` です。先頭二文字 `Tw` だけだと `TwoGigabitEthernet` になってしまいますので要注意です。
 
-このコードを持っておけば、パラメータシートをYAMLで書いたりする場面で長い正式名称を使わずとも省略表記で書けるようになって便利です。
+このコードを手元に持っておけば、パラメータシートをYAMLで書くような場面で長い正式名称を使わずとも省略表記で書けるようになって便利です。
 
 <BR><BR>
 
