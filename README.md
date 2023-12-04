@@ -294,4 +294,4 @@ Hu1/0/49 is normazlied as HundredGigE1/0/49
 
 [intf_naming_conventions.ipynb](https://github.com/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb "Open in Colab")
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://colab.research.google.com/github/takamitsu-iida/blob/main/intf_naming_conventions.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb)
