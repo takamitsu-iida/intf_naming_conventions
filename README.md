@@ -272,18 +272,20 @@ Hu1/0/49 is normalized as HundredGigE1/0/49
 
 `Gig0/0`は`GigabitEthernet0/0`に変換されます。
 
-`Gig 0/0` のようにインタフェース名と番号の間にスペースが入っても大丈夫です。同じように変換されます。
+`Gig 0/0` のようにインタフェース名と番号の間にスペースが入っても大丈夫です。同じように変換
+されます。
 
 `Twe` は `TwentyFiveGigE` です。先頭二文字 `Tw` だけだと `TwoGigabitEthernet` になってしまいますので要注意です。
 
 このコードを手元に持っておけば、パラメータシートをYAMLで書くような場面で長い正式名称を使わずとも省略表記で書けるようになって便利です。
+
+> NOTE: 省略形式のインタフェース名は辞書型`convert`のキーにある文字列である必要がありますので、必要に応じて追記して使うとよいと思います。
 
 <BR><BR>
 
 ## おまけ
 
 手っ取り早く試せるように Google Colaboratory 用のファイルを作成しておきました。
-下記の Open in Colab というアイコンをクリックすると、このコードをすぐに試せます。
-`test_intfs = []` のところに正規化したいインタフェース名を書き並べてお試しください。
+下記の Open in Colab というアイコンをクリックすると、cisco_intf_name.pyの内容をすぐに実行できます。
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/takamitsu-iida/intf_naming_conventions/blob/main/intf_naming_conventions.ipynb)
