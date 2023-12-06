@@ -1,11 +1,6 @@
 （このページはAdvent Calendar 2023向けに記載したものです）
 
 <!--
-この投稿は、JP - FNETS - server-p Advent Calendar 2023の＊＊日目の記事です。
-
-Topic
-#AdventCalender2023 #社内DX-SEデジタル革新
-
 python3 -m venv .venv
 direnv allow
 -->
